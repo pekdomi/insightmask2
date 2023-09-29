@@ -4,7 +4,34 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import App from './App.vue'
-import router from './router'
+import { createRouter, createWebHistory } from 'vue-router'
+
+const router = createRouter({
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes: [
+      {
+        path: "/",
+        name: "login",
+        component: LoginView
+      },
+      {
+          path: "/company",
+          name: "company",
+          component: CeoView
+      },
+      
+      {
+          path: "/user",
+          name: "user",
+          component: NpcView
+      },
+      {
+        path: '/:pathMatch(.*)*',
+        name: 'not-found',
+        component: NotFound
+      }
+  ]
+  })
 
 const app = createApp(App)
 
