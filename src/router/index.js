@@ -26,10 +26,7 @@ const router = createRouter({
       // path: "*",
       path: "/:catchAll(.*)",
       name: "NotFound",
-      component: PageNotFound,
-      meta: {
-        requiresAuth: false
-      }
+      component: NotFound
     }
 ]
 })
