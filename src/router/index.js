@@ -21,6 +21,15 @@ const router = createRouter({
         path: "/user",
         name: "user",
         component: NpcView
+    },
+    {
+      // path: "*",
+      path: "/:catchAll(.*)",
+      name: "NotFound",
+      component: PageNotFound,
+      meta: {
+        requiresAuth: false
+      }
     }
 ]
 })
