@@ -1,4 +1,4 @@
-// mongodb+srv://zetila:<password>@insightmask.mhn8tdl.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp
+
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -17,7 +17,7 @@ app.use(function(req, response, next) {
 })
 
 // database
-const uri = "mongodb+srv://zetila:siv4asdFORno1@insightmask.mhn8tdl.mongodb.net/test3?retryWrites=true&w=majority&appName=AtlasApp"
+const uri = ""
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
