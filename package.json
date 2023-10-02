@@ -8,8 +8,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "daisyui": "^3.8.1",
+    "express": "^4.18.2",
     "flowbite": "^1.8.1",
+    "mongodb": "^6.1.0",
     "pinia": "^2.1.6",
     "serve": "^14.2.1",
     "vue": "^3.3.4",
@@ -18,8 +22,22 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.3.4",
     "autoprefixer": "^10.4.16",
+    "nodemon": "^3.0.1",
     "postcss": "^8.4.30",
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.9"
-  }
+  },
+  "description": "This template should help get you started developing with Vue 3 in Vite.",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pekdomi/InsightMask.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pekdomi/InsightMask/issues"
+  },
+  "homepage": "https://github.com/pekdomi/InsightMask#readme"
 }

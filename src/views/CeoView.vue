@@ -1,5 +1,19 @@
 <script setup>
-import { RouterLink } from "vue-router"
+    import { RouterLink } from "vue-router"
+    import { reactive, onMounted } from 'vue'
+    const state = reactive({
+        messages :{}
+    })
+
+    function GetAll() {
+        fetch("http://localhost:3000/")
+            .then(res => res.json())
+            .then(data => {
+                state.messages = data
+            })
+    }
+    onMounted(() => GetAll())
+    console.log(state)
 </script>
 
 
@@ -13,8 +27,19 @@ import { RouterLink } from "vue-router"
             </button>
         </RouterLink>
     </div>
-
-    <div>
+    <div className="grid grid-cols-1 gap-2">
+        <div v-for="item in state.messages" :key="item.companyName">
         
+            <div class="collapse bg-base-200">
+            <input type="radio" name="my-accordion-1" checked="checked" /> 
+            <div class="collapse-title text-xl font-medium">
+                {{ item.companyName }}
+                {{ item.emailAddress }}
+            </div>
+            <div class="collapse-content"> 
+                {{ item.message }}
+            </div>
+        </div>
+        </div>
     </div>
 </template>
