@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import CeoView from "../views/CeoView.vue"
 import LoginView from "../views/LoginView.vue"
+import MainView from "../views/MainView.vue"
 import NpcView from "../views/NpcView.vue"
 
 const router = createRouter({
@@ -8,11 +9,16 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "login",
-      component: LoginView
+      name: "main",
+      component: MainView
     },
     {
-        path: "/company",
+      path: "/login",
+      name: "login",
+      component: LoginView
+  },
+    {
+        path: "/company/:id",
         name: "company",
         component: CeoView
     },

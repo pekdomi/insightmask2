@@ -3,7 +3,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const cors = require("cors")
+// const cors = require("cors")
 // creat our express app
 const app = express()
 
@@ -17,7 +17,7 @@ app.use(function(req, response, next) {
 })
 
 // database
-const uri = ""
+const uri = "mongodb+srv://zetila:r0PgXFuzEP8EpaN3@insightmask.mhn8tdl.mongodb.net/test4?retryWrites=true&w=majority&appName=AtlasApp"
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -36,7 +36,9 @@ app.use(bodyParser.json())
 // itt lehet tobb ilyet csinalni ha tob route van
 //*
 const MessagesRoute = require('./routes/messages');
-    app.use('/', MessagesRoute);
+    app.use('/message/', MessagesRoute);
+const CompanyRoute = require('./routes/companies');
+    app.use('/company/', CompanyRoute);
 
 // start server
 app.listen(3000, () => {

@@ -20,9 +20,8 @@ const NewMessage = () => {
             message: state.value.message_
         })
     }
-    fetch("http://localhost:3000/new",
-        requestOptions)
-}
+    fetch("http://localhost:3000/message/newmsg",
+        requestOptions)}
 
 const CheckForm = () => {
     if (state.value.company_name_ != '' && state.value.message_ != '') {

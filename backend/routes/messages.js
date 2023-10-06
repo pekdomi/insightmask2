@@ -1,6 +1,26 @@
 const express = require("express");
 const router = express.Router();
-const Message_model = require('../models/messages');
+//const createMessageModel = require('../models/messages');
+
+
+//models
+const mongoose = require("mongoose");
+const MessageSchema = new mongoose.Schema({
+    companyName: String,
+    emailAddress: String,
+    message: String
+})
+
+function createMessageModel(collectionName) {
+    return mongoose.model(collectionName, MessageSchema, collectionName);
+  }
+
+Message_model = createMessageModel("messages")
+//models
+
+
+
+
 
 // get all messages
 router.get('/', async (req, res) => {
@@ -9,9 +29,15 @@ router.get('/', async (req, res) => {
 })
 
 
+
+
+
 // create new message
-router.post('/new', async (req, res) => {
-    const newMessage = new Message_model(
+router.post('/newmsg', async (req, res) => {
+
+    const Message_model_with_collection_name = createMessageModel(req.body.companyName)
+    console.log(Message_model_with_collection_name)
+    const newMessage = new Message_model_with_collection_name(
         
         req.body   // what the Vue App is sending
         // {
@@ -27,6 +53,8 @@ router.post('/new', async (req, res) => {
     // Q: ITT EZ MICSODA
     //
 })
+
+
 
 
 // get msg by id

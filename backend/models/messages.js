@@ -1,8 +1,13 @@
-const mongoose = require("mongoose");
+/*const mongoose = require("mongoose");
 const MessageSchema = new mongoose.Schema({
     companyName: String,
     emailAddress: String,
     message: String
 })
 
-module.exports = mongoose.model('Message', MessageSchema)
+function createMessageModel(collectionName) {
+    return mongoose.model(collectionName, MessageSchema, collectionName);
+  }
+
+  
+module.exports = createMessageModel*/
