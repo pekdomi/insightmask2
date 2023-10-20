@@ -1,24 +1,23 @@
 const express = require("express");
 const router = express.Router();
-//const createMessageModel = require('../models/messages');
+const createMessageModel = require('../models/messages');
 
 
 //models
+/*
 const mongoose = require("mongoose");
 const MessageSchema = new mongoose.Schema({
     companyName: String,
     emailAddress: String,
     message: String
 })
-
 function createMessageModel(collectionName) {
     return mongoose.model(collectionName, MessageSchema, collectionName);
-  }
+}
+*/
 
 Message_model = createMessageModel("messages")
 //models
-
-
 
 
 
@@ -28,15 +27,11 @@ router.get('/', async (req, res) => {
     res.json(messages)
 })
 
-
-
-
-
 // create new message
 router.post('/newmsg', async (req, res) => {
 
     const Message_model_with_collection_name = createMessageModel(req.body.companyName)
-    console.log(Message_model_with_collection_name)
+    //console.log("\nfrom routes/messages.js: " + Message_model_with_collection_name)
     const newMessage = new Message_model_with_collection_name(
         
         req.body   // what the Vue App is sending

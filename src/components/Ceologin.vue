@@ -3,10 +3,9 @@
 </script>
 <template>
   <div class="card w-96  bg-base-100 shadow-xl top-10">
-    <figure><img src="/ceobutton.jpg" alt="Shoes" /></figure>
     <div class="card-body">
       <h2 class="card-title">Céges felület</h2>
-      <p>Beérkező visszajelzések listája Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <p>Beérkező visszajelzések listája</p>
       <div class="card-actions justify-end">
         <div>
           <RouterLink to="/login"><button
@@ -19,4 +18,5 @@
         </div>
     </div>
   </div>
-</div></template>
+</div>
+</template>

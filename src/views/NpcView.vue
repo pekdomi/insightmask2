@@ -1,12 +1,23 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 var state = ref({
     company_name_: '',
     email_address_: '',
-    message_: ''
+    message_: '',
 })
 
+var companies = reactive({companies : {}})
 
+function GetAll() {
+        fetch("http://localhost:3000/company/getall")
+        .then(res => res.json())
+        .then(data => {
+            companies.companies = data
+        })
+    }
+    
+onMounted(() => GetAll())
+    
 const NewMessage = () => {
     const requestOptions = {
         method: "POST",
@@ -26,10 +37,11 @@ const NewMessage = () => {
 const CheckForm = () => {
     if (state.value.company_name_ != '' && state.value.message_ != '') {
         isVisible = true
-        console.log("now")
     }
 }
-console.log(state)
+
+console.log("\nfrom NpcView: " + state)
+
 
 
 
@@ -46,9 +58,19 @@ let isVisible = ref(false);
                 <div>
                     <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Címzett cég neve</label>
+                        <div class="dropdown dropdown-right">
+        <label  tabindex="0" class="btn mb-1 text-white bg-blue-700 hover:bg-blue-800
+        font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center
+         dark:bg-blue-600 dark:hover:bg-blue-700 ">Cégek</label>
+        <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 m-1">
+            <li v-for="item in companies.companies" :key="item.company_name">
+                    <a @click="state.company_name_ = item.companyName"> {{ item.companyName }}</a>
+            </li>
+        </ul>
+</div>
                     <input v-model="state.company_name_" type="text" id="company"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Cég neve..." required>
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Válasszon céget!" required disabled>
                 </div>
                 <!--
                 <div>

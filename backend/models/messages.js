@@ -1,4 +1,4 @@
-/*const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const MessageSchema = new mongoose.Schema({
     companyName: String,
     emailAddress: String,
@@ -10,4 +10,4 @@ function createMessageModel(collectionName) {
   }
 
   
-module.exports = createMessageModel*/
+module.exports = createMessageModel
